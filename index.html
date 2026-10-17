@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kesingan SS Trust — Education for Every Child</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bone: #f4f0e8;
+            --bone-dark: #e8e1d3;
+            --dark: #0f0e0c;
+            --dark-2: #1a1917;
+            --dark-3: #252320;
+            --paper: #faf6ee;
+            --ink: #0f0e0c;
+            --text: #3f3b36;
+            --text-mid: #6a635a;
+            --text-soft: #8f8779;
+            --text-light: #b5ad9d;
+            --white: #ffffff;
+            --cream: #f9f5ec;
+            --gold: #b8860b;
+            --gold-light: #d4a94a;
+            --rust: #a0522d;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'EB Garamond', Georgia, serif;
+            color: var(--cream);
+            line-height: 1.02;
+            font-weight: 400;
+            letter-spacing: -0.015em;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+        button { font-family: inherit; cursor: pointer; }
+
+        .wrap {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        /* ============ FIXED NAV ============ */
+        .nav-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            mix-blend-mode: difference;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--cream);
+        }
+        .nav-brand .mark {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(244, 240, 232, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'EB Garamond', serif;
+            font-size: 16px;
+            font-style: italic;
+            border-radius: 50%;
+        }
+        .nav-brand .text {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            letter-spacing: -0.01em;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--cream);
+            font-weight: 500;
+            transition: opacity 0.2s;
+            opacity: 0.75;
+        }
+        .nav-links a:hover { opacity: 1; }
+        .nav-menu-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(244, 240, 232, 0.4);
+            background: transparent;
+            color: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .nav-menu-btn:hover { background: rgba(244, 240, 232, 0.1); }
+
+        /* ============ HERO ============ */
+        .hero-cinema {
+            height: 100vh;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-cinema-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1800&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(0.3) brightness(0.55);
+            animation: subtleZoom 24s ease-in-out infinite alternate;
+        }
+        @keyframes subtleZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.08); }
+        }
+        .hero-cinema::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 20%, rgba(15, 14, 12, 0.7) 100%);
+            z-index: 1;
+        }
+        .hero-cinema::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15,14,12,0.5) 0%, transparent 30%, transparent 70%, rgba(15,14,12,0.9) 100%);
+            z-index: 2;
+        }
+        .hero-cinema-inner {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 48px;
+            max-width: 1200px;
+        }
+        .hero-cinema-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            font-weight: 600;
+            margin-bottom: 44px;
+        }
+        .hero-cinema-eyebrow::before,
+        .hero-cinema-eyebrow::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold-light);
+        }
+        .hero-cinema h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(64px, 11vw, 148px);
+            line-height: 0.88;
+            letter-spacing: -0.03em;
+            color: var(--cream);
+            font-weight: 400;
+            margin-bottom: 32px;
+        }
+        .hero-cinema h1 em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--gold-light);
+        }
+        .hero-cinema-lede {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(18px, 2vw, 24px);
+            line-height: 1.5;
+            font-style: italic;
+            color: rgba(244, 240, 232, 0.85);
+            max-width: 720px;
+            margin: 0 auto 48px;
+            font-weight: 400;
+        }
+        .hero-cta-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-ghost-cinema {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 16px 32px;
+            border: 1px solid rgba(244, 240, 232, 0.5);
+            color: var(--cream);
+            background: transparent;
+            transition: all 0.3s;
+        }
+        .btn-ghost-cinema:hover {
+            background: var(--cream);
+            color: var(--dark);
+            border-color: var(--cream);
+        }
+        .btn-solid-cinema {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 16px 32px;
+            background: var(--cream);
+            color: var(--dark);
+            border: 1px solid var(--cream);
+            transition: all 0.3s;
+        }
+        .btn-solid-cinema:hover {
+            background: var(--gold-light);
+            border-color: var(--gold-light);
+            color: var(--dark);
+        }
+        .hero-scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: rgba(244, 240, 232, 0.6);
+            font-family: 'Inter', sans-serif;
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .hero-scroll-hint::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(180deg, rgba(244, 240, 232, 0.6), transparent);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+        @keyframes scrollLine {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.5); transform-origin: top; }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* ============ ABOUT ============ */
+        .about-section {
+            background: var(--dark);
+            padding: 140px 0;
+            position: relative;
+        }
+        .about-section .wrap { max-width: 980px; }
+        .about-section .eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .about-section .eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .about-section h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(32px, 4.5vw, 56px);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--cream);
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 32px;
+        }
+        .about-section h2 em {
+            color: var(--gold-light);
+            font-weight: 500;
+        }
+        .about-story {
+            font-family: 'EB Garamond', serif;
+            font-size: 19px;
+            line-height: 1.75;
+            color: rgba(244, 240, 232, 0.75);
+            margin-bottom: 24px;
+        }
+        .about-story strong { color: var(--cream); font-weight: 500; }
+        .about-meta {
+            display: flex;
+            gap: 64px;
+            padding-top: 56px;
+            margin-top: 56px;
+            border-top: 1px solid rgba(244, 240, 232, 0.15);
+            flex-wrap: wrap;
+        }
+        .about-meta .item { flex: 1; min-width: 180px; }
+        .about-meta .item .num {
+            font-family: 'EB Garamond', serif;
+            font-size: 56px;
+            color: var(--gold-light);
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .about-meta .item .num em { font-style: italic; font-size: 36px; }
+        .about-meta .item .lbl {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        /* ============ IMAGE BANDS ============ */
+        .image-band {
+            height: 80vh;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+        .image-band-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.6) saturate(0.9);
+        }
+        .image-band::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(15, 14, 12, 0.9) 100%);
+        }
+        .image-band-content {
+            position: relative;
+            z-index: 2;
+            padding: 80px 48px;
+            max-width: 1360px;
+            width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 48px;
+            align-items: flex-end;
+        }
+        .image-band-tag {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .image-band-tag::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold-light);
+        }
+        .image-band h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(40px, 6vw, 88px);
+            line-height: 0.95;
+            letter-spacing: -0.025em;
+            color: var(--cream);
+            font-weight: 400;
+            max-width: 800px;
+        }
+        .image-band h2 em { font-style: italic; color: var(--gold-light); }
+        .image-band-stat {
+            text-align: right;
+            border-left: 1px solid rgba(244, 240, 232, 0.25);
+            padding-left: 48px;
+        }
+        .image-band-stat .num {
+            font-family: 'EB Garamond', serif;
+            font-size: 96px;
+            line-height: 1;
+            color: var(--cream);
+            font-weight: 400;
+            letter-spacing: -0.03em;
+        }
+        .image-band-stat .num em { font-style: italic; color: var(--gold-light); font-size: 60px; }
+        .image-band-stat .lbl {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(244, 240, 232, 0.6);
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        /* ============ CLASSES ============ */
+        .curriculum-section {
+            background: var(--dark-2);
+            padding: 120px 0;
+        }
+        .curriculum-head {
+            margin-bottom: 72px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: end;
+        }
+        .curriculum-head .eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .curriculum-head .eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .curriculum-head h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(40px, 5.5vw, 72px);
+            line-height: 0.95;
+            letter-spacing: -0.025em;
+            color: var(--cream);
+            font-weight: 400;
+        }
+        .curriculum-head h2 em { font-style: italic; color: var(--gold-light); }
+        .curriculum-head .right p {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            line-height: 1.5;
+            font-style: italic;
+            color: rgba(244, 240, 232, 0.7);
+            max-width: 480px;
+        }
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(244, 240, 232, 0.1);
+            border: 1px solid rgba(244, 240, 232, 0.1);
+        }
+        .class-card {
+            background: var(--dark-2);
+            padding: 40px 32px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .class-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+        .class-card:hover::before { transform: scaleX(1); }
+        .class-card:hover { background: var(--dark-3); }
+        .class-card .class-num {
+            font-family: 'EB Garamond', serif;
+            font-size: 56px;
+            font-style: italic;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        .class-card h4 {
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            color: var(--cream);
+            font-weight: 400;
+            margin-bottom: 12px;
+            letter-spacing: -0.015em;
+        }
+        .class-card .subjects span {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(212, 169, 74, 0.1);
+            border: 1px solid rgba(212, 169, 74, 0.2);
+            border-radius: 100px;
+            margin: 2px 2px 2px 0;
+            color: var(--gold-light);
+            font-weight: 500;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ GALLERY ============ */
+        .gallery-section {
+            background: var(--dark);
+            padding: 140px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-head {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: end;
+            margin-bottom: 64px;
+        }
+        .gallery-head .eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .gallery-head .eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .gallery-head h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(40px, 5.5vw, 72px);
+            line-height: 0.95;
+            letter-spacing: -0.025em;
+            color: var(--cream);
+            font-weight: 400;
+        }
+        .gallery-head h2 em { font-style: italic; color: var(--gold-light); }
+        .gallery-head .right p {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            line-height: 1.5;
+            font-style: italic;
+            color: rgba(244, 240, 232, 0.7);
+            max-width: 480px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .gallery-item {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            background: var(--dark-3);
+            border: 1px solid rgba(244, 240, 232, 0.08);
+            transition: all 0.3s;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.5) brightness(0.85);
+            transition: all 0.5s;
+        }
+        .gallery-item:hover {
+            border-color: var(--gold);
+            z-index: 2;
+        }
+        .gallery-item:hover img {
+            filter: grayscale(0) brightness(1);
+            transform: scale(1.08);
+        }
+        .gallery-item::after {
+            content: '\f00e';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--cream);
+            background: rgba(15, 14, 12, 0.55);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .gallery-item:hover::after { opacity: 1; }
+        .gallery-item .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 16px 12px;
+            background: linear-gradient(180deg, transparent, rgba(15,14,12,0.9));
+            font-family: 'EB Garamond', serif;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--cream);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s;
+            z-index: 1;
+        }
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 9, 8, 0.97);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .lightbox.open {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-image-wrap {
+            max-width: 90vw;
+            max-height: 85vh;
+            position: relative;
+            animation: lightboxIn 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+        @keyframes lightboxIn {
+            from { opacity: 0; transform: scale(0.92); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .lightbox-image-wrap img {
+            max-width: 90vw;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            border: 1px solid rgba(212, 169, 74, 0.3);
+        }
+        .lightbox-caption {
+            text-align: center;
+            padding: 20px 0 0;
+            font-family: 'EB Garamond', serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--cream);
+            opacity: 0.85;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(244, 240, 232, 0.08);
+            border: 1px solid rgba(244, 240, 232, 0.2);
+            color: var(--cream);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s;
+            z-index: 2;
+        }
+        .lightbox-close:hover {
+            background: var(--gold);
+            color: var(--dark);
+            border-color: var(--gold);
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(244, 240, 232, 0.08);
+            border: 1px solid rgba(244, 240, 232, 0.2);
+            color: var(--cream);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s;
+            z-index: 2;
+        }
+        .lightbox-nav:hover {
+            background: var(--gold);
+            color: var(--dark);
+            border-color: var(--gold);
+        }
+        .lightbox-nav.prev { left: 24px; }
+        .lightbox-nav.next { right: 24px; }
+        .lightbox-counter {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: rgba(244, 240, 232, 0.6);
+            font-weight: 600;
+        }
+
+        /* ============ VOLUNTEERS ============ */
+        .volunteers-section {
+            background: var(--dark-2);
+            padding: 140px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .volunteers-head {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: end;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 1;
+        }
+        .volunteers-head .eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .volunteers-head .eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .volunteers-head h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(40px, 5.5vw, 72px);
+            line-height: 0.95;
+            letter-spacing: -0.025em;
+            color: var(--cream);
+            font-weight: 400;
+        }
+        .volunteers-head h2 em { font-style: italic; color: var(--gold-light); }
+        .volunteers-head .right p {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            line-height: 1.5;
+            font-style: italic;
+            color: rgba(244, 240, 232, 0.7);
+            max-width: 480px;
+        }
+        .volunteers-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+        .volunteer-testimonial {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            position: relative;
+            z-index: 1;
+        }
+        .testimonial-card {
+            background: rgba(244, 240, 232, 0.03);
+            border: 1px solid rgba(244, 240, 232, 0.08);
+            padding: 40px 32px;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 28px;
+            font-family: 'EB Garamond', serif;
+            font-size: 100px;
+            line-height: 1;
+            color: var(--gold);
+            opacity: 0.15;
+            font-style: italic;
+            pointer-events: none;
+        }
+        .testimonial-card .quote {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            line-height: 1.5;
+            color: rgba(244, 240, 232, 0.85);
+            font-style: italic;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+        }
+        .testimonial-card .quote em { color: var(--gold-light); font-weight: 500; }
+        .testimonial-card .author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(244, 240, 232, 0.1);
+        }
+        .testimonial-card .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            font-style: italic;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+        .testimonial-card .author-info .name {
+            font-family: 'EB Garamond', serif;
+            font-size: 18px;
+            color: var(--cream);
+            margin-bottom: 2px;
+            font-weight: 500;
+        }
+        .testimonial-card .author-info .role {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ============ QUOTE ============ */
+        .quote-cinema {
+            background: var(--dark);
+            padding: 180px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .quote-cinema::before {
+            content: '"';
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'EB Garamond', serif;
+            font-size: 500px;
+            line-height: 1;
+            color: var(--gold);
+            opacity: 0.08;
+            font-style: italic;
+            pointer-events: none;
+        }
+        .quote-cinema .wrap {
+            max-width: 1100px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .quote-cinema .eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            font-weight: 600;
+            margin-bottom: 48px;
+        }
+        .quote-cinema blockquote {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(40px, 6vw, 72px);
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            color: var(--cream);
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 56px;
+        }
+        .quote-cinema blockquote em { color: var(--gold-light); }
+        .quote-cinema .attribution {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .quote-cinema .attribution .name {
+            font-family: 'EB Garamond', serif;
+            font-size: 22px;
+            color: var(--cream);
+            letter-spacing: 0.02em;
+        }
+        .quote-cinema .attribution .role {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        /* ============ TRUSTEES ============ */
+        .trustees-cinema {
+            background: var(--dark-2);
+            padding: 140px 0;
+        }
+        .trustees-cinema-head {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 80px;
+        }
+        .trustees-cinema-head .eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+        .trustees-cinema-head h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1;
+            letter-spacing: -0.025em;
+            color: var(--cream);
+            font-weight: 400;
+        }
+        .trustees-cinema-head h2 em { font-style: italic; color: var(--gold-light); }
+        .trustees-cinema-head .sub {
+            font-family: 'EB Garamond', serif;
+            font-size: 19px;
+            line-height: 1.5;
+            font-style: italic;
+            color: rgba(244, 240, 232, 0.65);
+            margin-top: 20px;
+        }
+        .trustees-cinema-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .trustee-cinema {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .trustee-cinema:hover { transform: translateY(-6px); }
+        .trustee-cinema-photo {
+            aspect-ratio: 3 / 4;
+            overflow: hidden;
+            background: var(--dark-3);
+            margin-bottom: 22px;
+            position: relative;
+            border: 1px dashed rgba(212, 169, 74, 0.3);
+        }
+        .trustee-cinema-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(1) brightness(0.9);
+            transition: filter 0.5s;
+        }
+        .trustee-cinema:hover .trustee-cinema-photo img {
+            filter: grayscale(0.3) brightness(1);
+        }
+        .trustee-cinema-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(15,14,12,0.7) 100%);
+        }
+        .trustee-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-light);
+            background: var(--dark-3);
+            z-index: 1;
+            opacity: 0.7;
+        }
+        .trustee-placeholder i { font-size: 40px; margin-bottom: 12px; opacity: 0.6; }
+        .trustee-placeholder span {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            opacity: 0.7;
+        }
+        .trustee-cinema .name {
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            color: var(--cream);
+            letter-spacing: -0.01em;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .trustee-cinema .role {
+            font-family: 'Inter', sans-serif;
+            font-size: 9.5px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .trustee-cinema .desc {
+            font-family: 'EB Garamond', serif;
+            font-size: 15px;
+            line-height: 1.5;
+            color: rgba(244, 240, 232, 0.55);
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* ============ DOCUMENTS ============ */
+        .docs-cinema {
+            background: var(--dark);
+            padding: 140px 0;
+        }
+        .docs-cinema-head {
+            margin-bottom: 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: end;
+        }
+        .docs-cinema-head .left .eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .docs-cinema-head .left .eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .docs-cinema-head .left h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(40px, 5.5vw, 72px);
+            line-height: 0.95;
+            letter-spacing: -0.025em;
+            color: var(--cream);
+            font-weight: 400;
+        }
+        .docs-cinema-head .left h2 em { font-style: italic; color: var(--gold-light); }
+        .docs-cinema-head .right p {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            line-height: 1.5;
+            font-style: italic;
+            color: rgba(244, 240, 232, 0.7);
+            max-width: 480px;
+        }
+        .docs-list-cinema { border-top: 1px solid rgba(244, 240, 232, 0.12); }
+        .doc-cinema {
+            display: grid;
+            grid-template-columns: 80px 1fr 200px 120px;
+            gap: 48px;
+            padding: 32px 0;
+            border-bottom: 1px solid rgba(244, 240, 232, 0.12);
+            align-items: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .doc-cinema:hover {
+            padding-left: 16px;
+            padding-right: 16px;
+            background: rgba(244, 240, 232, 0.02);
+        }
+        .doc-cinema .d-num {
+            font-family: 'EB Garamond', serif;
+            font-size: 40px;
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+        .doc-cinema .d-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 26px;
+            color: var(--cream);
+            font-weight: 400;
+            letter-spacing: -0.015em;
+            margin-bottom: 4px;
+            transition: color 0.3s;
+        }
+        .doc-cinema:hover .d-title { color: var(--gold-light); }
+        .doc-cinema .d-desc {
+            font-family: 'EB Garamond', serif;
+            font-size: 15px;
+            font-style: italic;
+            color: rgba(244, 240, 232, 0.55);
+        }
+        .doc-cinema .d-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+        .doc-cinema .d-meta .type { color: var(--gold); }
+        .doc-cinema .d-arrow {
+            justify-self: end;
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(244, 240, 232, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cream);
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .doc-cinema:hover .d-arrow {
+            background: var(--gold-light);
+            border-color: var(--gold-light);
+            color: var(--dark);
+            transform: rotate(-45deg);
+        }
+
+        /* ============ CLOSING HERO ============ */
+        .closing-hero {
+            height: 90vh;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .closing-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1800&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(0.2) brightness(0.4);
+        }
+        .closing-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(15,14,12,0.3) 0%, rgba(15,14,12,0.85) 100%);
+            z-index: 1;
+        }
+        .closing-hero-inner {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 48px;
+            max-width: 900px;
+        }
+        .closing-hero h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(48px, 8vw, 112px);
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            color: var(--cream);
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+        .closing-hero h2 em { font-style: italic; color: var(--gold-light); }
+        .closing-hero p {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            line-height: 1.5;
+            font-style: italic;
+            color: rgba(244, 240, 232, 0.75);
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer-cinema {
+            background: var(--dark-2);
+            padding: 100px 0 32px;
+            border-top: 1px solid rgba(244, 240, 232, 0.1);
+        }
+        .footer-top-cinema {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 64px;
+            padding-bottom: 64px;
+            border-bottom: 1px solid rgba(244, 240, 232, 0.1);
+        }
+        .footer-brand-cinema .mark {
+            width: 56px;
+            height: 56px;
+            border: 1px solid rgba(244, 240, 232, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            font-style: italic;
+            color: var(--cream);
+            border-radius: 50%;
+            margin-bottom: 24px;
+        }
+        .footer-brand-cinema h3 {
+            font-family: 'EB Garamond', serif;
+            font-size: 30px;
+            color: var(--cream);
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .footer-brand-cinema .sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .footer-brand-cinema p {
+            font-family: 'EB Garamond', serif;
+            font-size: 16px;
+            line-height: 1.65;
+            font-style: italic;
+            color: rgba(244, 240, 232, 0.6);
+            max-width: 380px;
+            margin-bottom: 24px;
+        }
+        .footer-reg-cinema {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            font-weight: 600;
+            padding: 10px 14px;
+            border: 1px solid rgba(212, 169, 74, 0.3);
+            display: inline-block;
+        }
+        .footer-col-cinema h5 {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--cream);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .footer-col-cinema ul { list-style: none; }
+        .footer-col-cinema li { margin-bottom: 12px; }
+        .footer-col-cinema a {
+            font-family: 'EB Garamond', serif;
+            font-size: 17px;
+            color: rgba(244, 240, 232, 0.6);
+            font-style: italic;
+            transition: color 0.2s;
+        }
+        .footer-col-cinema a:hover { color: var(--gold-light); }
+        .footer-bottom-cinema {
+            padding-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(244, 240, 232, 0.4);
+            font-weight: 500;
+        }
+        .footer-legal-cinema { display: flex; gap: 28px; }
+        .footer-legal-cinema a:hover { color: var(--gold-light); }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .nav-fixed { padding: 16px 24px; }
+            .nav-links { display: none; }
+            .wrap { padding: 0 32px; }
+            .about-meta { gap: 32px; }
+            .image-band-content { grid-template-columns: 1fr; gap: 32px; align-items: flex-end; }
+            .image-band-stat { border-left: none; border-top: 1px solid rgba(244, 240, 232, 0.25); padding-left: 0; padding-top: 32px; text-align: left; }
+            .curriculum-head, .volunteers-head, .gallery-head { grid-template-columns: 1fr; gap: 24px; }
+            .classes-grid { grid-template-columns: repeat(2, 1fr); }
+            .volunteer-testimonial { grid-template-columns: 1fr; }
+            .trustees-cinema-grid { grid-template-columns: repeat(2, 1fr); }
+            .docs-cinema-head { grid-template-columns: 1fr; gap: 24px; }
+            .doc-cinema { grid-template-columns: 60px 1fr 40px; gap: 24px; padding: 24px 0; }
+            .doc-cinema .d-meta { display: none; }
+            .doc-cinema .d-num { font-size: 32px; }
+            .doc-cinema .d-title { font-size: 20px; }
+            .footer-top-cinema { grid-template-columns: 1fr 1fr; gap: 48px; }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+            .lightbox { padding: 40px 20px; }
+            .lightbox-nav { width: 44px; height: 44px; }
+            .lightbox-nav.prev { left: 12px; }
+            .lightbox-nav.next { right: 12px; }
+        }
+        @media (max-width: 720px) {
+            .hero-cinema { min-height: 600px; }
+            .hero-cinema-inner { padding: 0 24px; }
+            .hero-cinema h1 { font-size: 64px; }
+            .hero-cinema-lede { font-size: 17px; }
+            .hero-cta-row { flex-direction: column; align-items: stretch; }
+            .btn-ghost-cinema, .btn-solid-cinema { width: 100%; justify-content: center; }
+            .wrap { padding: 0 24px; }
+            .about-section { padding: 80px 0; }
+            .about-meta { gap: 32px; padding-top: 32px; margin-top: 32px; }
+            .about-meta .item { min-width: 100%; }
+            .about-meta .item .num { font-size: 44px; }
+            .image-band { height: auto; min-height: 500px; padding: 40px 0; }
+            .image-band-content { padding: 40px 24px; }
+            .image-band h2 { font-size: 40px; }
+            .image-band-stat .num { font-size: 56px; }
+            .image-band-stat .num em { font-size: 36px; }
+            .curriculum-section, .volunteers-section, .gallery-section { padding: 80px 0; }
+            .classes-grid { grid-template-columns: 1fr; }
+            .class-card { padding: 32px 24px; }
+            .class-card .class-num { font-size: 44px; }
+            .volunteers-head { margin-bottom: 48px; }
+            .gallery-head { margin-bottom: 40px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .lightbox { padding: 20px 12px; }
+            .lightbox-close { top: 12px; right: 12px; width: 40px; height: 40px; }
+            .lightbox-nav { width: 38px; height: 38px; font-size: 14px; }
+            .lightbox-nav.prev { left: 8px; }
+            .lightbox-nav.next { right: 8px; }
+            .lightbox-caption { font-size: 15px; padding-top: 12px; }
+            .quote-cinema { padding: 100px 0; }
+            .quote-cinema::before { font-size: 300px; top: 40px; }
+            .quote-cinema blockquote { font-size: 28px; }
+            .trustees-cinema { padding: 80px 0; }
+            .trustees-cinema-grid { grid-template-columns: 1fr; gap: 24px; }
+            .trustee-cinema .name { font-size: 18px; }
+            .docs-cinema { padding: 80px 0; }
+            .docs-cinema-head { margin-bottom: 40px; }
+            .doc-cinema { grid-template-columns: 40px 1fr 40px; gap: 16px; }
+            .doc-cinema .d-num { font-size: 24px; }
+            .doc-cinema .d-title { font-size: 16px; }
+            .doc-cinema .d-desc { display: none; }
+            .closing-hero h2 { font-size: 48px; }
+            .closing-hero p { font-size: 16px; }
+            .footer-cinema { padding: 60px 0 24px; }
+            .footer-top-cinema { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; }
+            .footer-bottom-cinema { flex-direction: column; text-align: center; }
+            .footer-brand-cinema h3 { font-size: 24px; }
+        }
+
+        /* ============ SCROLL REVEAL ============ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <!-- FIXED NAV -->
+    <nav class="nav-fixed">
+        <a href="#" class="nav-brand">
+            <div class="mark">SS</div>
+            <div class="text">Kesingan SS Trust</div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#volunteers">Volunteers</a></li>
+            <li><a href="#trustees">Trustees</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-cinema">
+        <div class="hero-cinema-bg"></div>
+        <div class="hero-cinema-inner">
+            <div class="hero-cinema-eyebrow">A Public Charitable Trust · In Memory of S. Swaminathan</div>
+            <h1>Every child,<br><em>every classroom.</em></h1>
+            <p class="hero-cinema-lede">
+                Founded in loving memory of Late S. Swaminathan, MA, BEd — a pioneer in 
+                education empowerment — Kesingan SS Trust runs free evening classes 
+                for children of Classes 1 to 8, taught entirely by volunteers.
+            </p>
+            <div class="hero-cta-row">
+                <a href="#classes" class="btn-solid-cinema">Explore Classes</a>
+                <a href="#gallery" class="btn-ghost-cinema">View Gallery</a>
+            </div>
+        </div>
+        <div class="hero-scroll-hint">Scroll</div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about-section" id="story">
+        <div class="wrap reveal">
+            <div class="eyebrow">Our Story</div>
+            <h2>Founded in memory of a <em>father of education.</em></h2>
+            <p class="about-story">
+                Kesingan SS Trust was founded in <strong>2008</strong> as a closely held trust by 
+                <strong>Mrs. Saraswathi Swamithan</strong>, along with her siblings, in loving memory of 
+                <strong>Late S. Swaminathan, MA, BEd</strong>, Retd. HM, Manalmedu, Mayiladuthurai district.
+            </p>
+            <p class="about-story">
+                Late Mr. S. Swaminathan dedicated his career to education management, touching numerous lives 
+                through his coaching. A pioneer in education empowerment for women, he ensured all his daughters 
+                completed their studies, setting a remarkable example. 
+            </p>
+            <p class="about-story">
+                As a tribute to this father of education, his siblings formed the trust to empower underprivileged 
+                students through free coaching in Kesingan village, his birthplace. Over the past 
+                <strong>16 years</strong>, with God's grace, around <strong>80 students have benefited annually</strong>, 
+                transforming families' lives. The Kesingan panchayat school is now rated among the best in the 
+                district, with the Headmaster acknowledging the trust's significant contribution.
+            </p>
+            <div class="about-meta">
+                <div class="item"><div class="num">16</div><div class="lbl">Years of Service</div></div>
+                <div class="item"><div class="num">80</div><div class="lbl">Students / Year</div></div>
+                <div class="item"><div class="num">8</div><div class="lbl">Class Levels</div></div>
+                <div class="item"><div class="num">100<em>%</em></div><div class="lbl">Free Education</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMAGE BAND 1 -->
+    <section class="image-band">
+        <div class="image-band-bg" style="background-image: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1800&q=80');"></div>
+        <div class="image-band-content reveal">
+            <div>
+                <div class="image-band-tag">The Foundation</div>
+                <h2>Free classes for children of Classes <em>1 to 8.</em></h2>
+            </div>
+            <div class="image-band-stat">
+                <div class="num">8</div>
+                <div class="lbl">Class Levels Taught</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMAGE BAND 2 -->
+    <section class="image-band">
+        <div class="image-band-bg" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1800&q=80');"></div>
+        <div class="image-band-content reveal">
+            <div>
+                <div class="image-band-tag">The People</div>
+                <h2>Taught entirely by <em>volunteers</em> who give their time.</h2>
+            </div>
+            <div class="image-band-stat">
+                <div class="num">80</div>
+                <div class="lbl">Students / Year</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLASSES -->
+    <section class="curriculum-section" id="classes">
+        <div class="wrap">
+            <div class="curriculum-head reveal">
+                <div>
+                    <div class="eyebrow">Classes We Teach</div>
+                    <h2>From <em>Class 1</em><br>to <em>Class 8.</em></h2>
+                </div>
+                <div class="right">
+                    <p>Eight levels, one purpose — a solid foundation in reading, writing, mathematics, and curiosity. Every class is taught by volunteers who bring patience, respect, and consistency.</p>
+                </div>
+            </div>
+
+            <div class="classes-grid reveal">
+                <div class="class-card"><div class="class-num">1</div><h4>Class One</h4><div class="subjects"><span>Reading</span><span>Writing</span><span>Numbers</span></div></div>
+                <div class="class-card"><div class="class-num">2</div><h4>Class Two</h4><div class="subjects"><span>Reading</span><span>Writing</span><span>Maths</span></div></div>
+                <div class="class-card"><div class="class-num">3</div><h4>Class Three</h4><div class="subjects"><span>English</span><span>Maths</span><span>Science</span></div></div>
+                <div class="class-card"><div class="class-num">4</div><h4>Class Four</h4><div class="subjects"><span>English</span><span>Maths</span><span>Science</span></div></div>
+                <div class="class-card"><div class="class-num">5</div><h4>Class Five</h4><div class="subjects"><span>English</span><span>Maths</span><span>Social</span></div></div>
+                <div class="class-card"><div class="class-num">6</div><h4>Class Six</h4><div class="subjects"><span>English</span><span>Maths</span><span>Science</span></div></div>
+                <div class="class-card"><div class="class-num">7</div><h4>Class Seven</h4><div class="subjects"><span>English</span><span>Maths</span><span>Science</span></div></div>
+                <div class="class-card"><div class="class-num">8</div><h4>Class Eight</h4><div class="subjects"><span>English</span><span>Maths</span><span>Science</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section" id="gallery">
+        <div class="wrap">
+            <div class="gallery-head reveal">
+                <div>
+                    <div class="eyebrow">Gallery</div>
+                    <h2>Moments from <em>our classrooms.</em></h2>
+                </div>
+                <div class="right">
+                    <p>A glimpse into the everyday life of the Trust — the children, the volunteers, and the small moments that make up sixteen years of quiet work.</p>
+                </div>
+            </div>
+
+            <div class="gallery-grid reveal" id="galleryGrid">
+                <div class="gallery-item" onclick="openLightbox(0)">
+                    <img src="01.jpeg" alt="Classroom" data-caption="Morning classes at the Trust">
+                    <div class="gallery-caption">Morning classes at the Trust</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(1)">
+                    <img src="02.jpeg" alt="Reading" data-caption="Reading session with volunteers">
+                    <div class="gallery-caption">Reading session with volunteers</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(2)">
+                    <img src="03.jpeg" alt="Children learning" data-caption="Learning together">
+                    <div class="gallery-caption">Learning together</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(3)">
+                    <img src="04.jpeg" alt="Volunteers" data-caption="Volunteers and children">
+                    <div class="gallery-caption">Volunteers and children</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(4)">
+                    <img src="05.jpeg" alt="Volunteers" data-caption="Volunteers and children">
+                    <div class="gallery-caption">Volunteers and children</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(5)">
+                    <img src="06.jpeg" alt="Volunteers" data-caption="Volunteers and children">
+                    <div class="gallery-caption">Volunteers and children</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOLUNTEERS -->
+    <section class="volunteers-section" id="volunteers">
+        <div class="wrap">
+            <div class="volunteers-head reveal">
+                <div>
+                    <div class="eyebrow">The Volunteers</div>
+                    <h2>People who <em>show up.</em></h2>
+                </div>
+                <div class="right">
+                    <p>Every teacher at Kesingan SS Trust is a volunteer. They come from the neighbourhood, from colleges, from offices — they give their evenings because they believe in these children.</p>
+                </div>
+            </div>
+
+            <div class="volunteer-testimonial reveal">
+                <div class="testimonial-card">
+                    <div class="quote">"I come three evenings a week. The children teach me as much as I teach them — <em>patience, curiosity, and joy.</em>"</div>
+                    <div class="author">
+                        <div class="author-avatar">V</div>
+                        <div class="author-info"><div class="name">R. Mariappan</div><div class="role">Teaching Class 3 & 4</div></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">"I joined as a college student. Four years later, I'm still here — <em>this place becomes part of you.</em>"</div>
+                    <div class="author">
+                        <div class="author-avatar">V</div>
+                        <div class="author-info"><div class="name"></div><div class="role">Teaching Class 6 & 7</div></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">"Teaching here reminded me what education is really about — <em>not marks, but confidence.</em>"</div>
+                    <div class="author">
+                        <div class="author-avatar">V</div>
+                        <div class="author-info"><div class="name">Volunteer Name</div><div class="role">Teaching Class 1 & 2</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="quote-cinema">
+        <div class="wrap reveal">
+            <div class="eyebrow">Our Conviction</div>
+            <blockquote>
+                A child's future should never be decided by their <em>family's income</em> — only by their <em>willingness to learn.</em>
+            </blockquote>
+            <div class="attribution">
+                <div class="name">Kesingan SS Trust</div>
+                <div class="role">In memory of S. Swaminathan</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUSTEES -->
+    <section class="trustees-cinema" id="trustees">
+        <div class="wrap">
+            <div class="trustees-cinema-head reveal">
+                <div class="eyebrow">Governance</div>
+                <h2>The people <em>entrusted.</em></h2>
+                <p class="sub">The Trust is guided by a small board of trustees who serve without remuneration — each responsible for a defined area of oversight.</p>
+            </div>
+            <div class="trustees-cinema-grid">
+                <div class="trustee-cinema reveal">
+                    <div class="trustee-cinema-photo">
+                        <img src="patti.jpeg" alt="Saraswathi Swamithan">
+                    </div>
+                    <div class="name">Saraswathi Swamithan</div>
+                    <div class="role">Founder Trustee</div>
+                    <div class="desc">Daughter of Late S. Swaminathan; founded the Trust with her siblings in his memory.</div>
+                </div>
+                                       <div class="trustee-cinema reveal">
+                    <div class="trustee-cinema-photo">
+                        <img src="shan.jpeg" alt="S. Shanmugam">
+                    </div>
+                    <div class="name">S. Shanmugasundaram</div>
+                    <div class="role">Managing Trustee</div>
+                    <div class="desc">Add a short description of this trustee's role and background.</div>
+                </div>
+                <div class="trustee-cinema reveal">
+                    <div class="trustee-cinema-photo">
+                        <img src="krish.jpeg" alt="S. Krishnakumar">
+                    </div>
+                    <div class="name">S. Krishnakumar
+                    </div>
+                    <div class="role">Trustee · MSc, BEd</div>
+                    <div class="desc">Shared the family's moral principles and helped envision the Trust's greater purpose.</div>
+                </div>
+                <div class="trustee-cinema reveal">
+                    <div class="trustee-cinema-photo">
+                        <img src="kumari.jpeg" alt="S. Kumari">
+                    </div>
+                    <div class="name">S.JayaKumari</div>
+                    <div class="role">Managing Trustee</div>
+                    <div class="desc">Add a short description of this trustee's role and background.</div>
+                </div>
+                                <div class="trustee-cinema reveal">
+                    <div class="trustee-cinema-photo">
+                        <img src="mathi.jpeg" alt="S. Mathiyalaki">
+                    </div>
+                    <div class="name">S. Mathiyalaki</div>
+                    <div class="role">Managing Trustee</div>
+                    <div class="desc">Add a short description of this trustee's role and background.</div>
+                </div>
+                                <div class="trustee-cinema reveal">
+                    <div class="trustee-cinema-photo">
+                        <img src="kala.jpeg" alt="S. Kala">
+                    </div>
+                    <div class="name">J. Kala</div>
+                    <div class="role">Managing Trustee</div>
+                    <div class="desc">Add a short description of this trustee's role and background.</div>
+                </div>
+                                <div class="trustee-cinema reveal">
+                    <div class="trustee-cinema-photo">
+                        <img src="selvi.jpeg" alt="S. Selvi">
+                    </div>
+                    <div class="name">S. Selvi</div>
+                    <div class="role">Managing Trustee</div>
+                    <div class="desc">Add a short description of this trustee's role and background.</div>
+                </div>
+         
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUMENTS -->
+    <section class="docs-cinema" id="documents">
+        <div class="wrap">
+            <div class="docs-cinema-head reveal">
+                <div class="left">
+                    <div class="eyebrow">Public Disclosures</div>
+                    <h2>Everything, <em>in the open.</em></h2>
+                </div>
+                <div class="right">
+                    <p>Every report — annual, financial, and impact — is published here for public review. Transparency is a duty, not a favour.</p>
+                </div>
+            </div>
+            <div class="docs-list-cinema">
+                <div class="doc-cinema reveal">
+                    <div class="d-num">01</div>
+                    <div><div class="d-title">Annual Report 2024–25</div><div class="d-desc">Complete account of programs, outcomes, and financial position.</div></div>
+                    <div class="d-meta"><span class="type">Annual</span> · PDF · 4.2 MB · Oct 2025</div>
+                    <div class="d-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="doc-cinema reveal">
+                    <div class="d-num">02</div>
+                    <div><div class="d-title">Audited Financial Statements 2024–25</div><div class="d-desc">Independently audited balance sheet, income statement, notes.</div></div>
+                    <div class="d-meta"><span class="type">Audited</span> · PDF · 2.8 MB · Sep 2025</div>
+                    <div class="d-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="doc-cinema reveal">
+                    <div class="d-num">03</div>
+                    <div><div class="d-title">Trust Deed & Registration Certificate</div><div class="d-desc">Founding documents, registration certificate, governing deed.</div></div>
+                    <div class="d-meta"><span class="type">Governance</span> · PDF · 1.1 MB · 2024</div>
+                    <div class="d-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="doc-cinema reveal">
+                    <div class="d-num">04</div>
+                    <div><div class="d-title">Independent Impact Assessment 2024</div><div class="d-desc">Third-party evaluation of program outcomes across all verticals.</div></div>
+                    <div class="d-meta"><span class="type">Impact</span> · PDF · 3.6 MB · Aug 2025</div>
+                    <div class="d-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLOSING HERO -->
+    <section class="closing-hero" id="contact">
+        <div class="closing-hero-bg"></div>
+        <div class="closing-hero-inner reveal">
+            <h2>For enquiries, volunteering, <em>and support.</em></h2>
+            <p>All correspondence to the Trust should be directed to the registered office. Response within two working days.</p>
+            <div class="hero-cta-row">
+                <a href="#" class="btn-solid-cinema">Submit a Written Enquiry</a>
+                <a href="#" class="btn-ghost-cinema">Office Details</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-cinema">
+        <div class="wrap">
+            <div class="footer-top-cinema">
+                <div class="footer-brand-cinema">
+                    <div class="mark">SS</div>
+                    <h3>Kesingan SS Trust</h3>
+                    <div class="sub">In Memory of S. Swaminathan · MA, BEd</div>
+                    <p>A public charitable trust running free evening classes for children of Classes 1 to 8, taught by volunteers who give their time.</p>
+                    <div class="footer-reg-cinema">Reg. No. 44/SS/TR/1987 · 80G Certified</div>
+                </div>
+                <div class="footer-col-cinema">
+                    <h5>The Trust</h5>
+                    <ul>
+                        <li><a href="#story">Our Story</a></li>
+                        <li><a href="#trustees">Trustees</a></li>
+                        <li><a href="#documents">Disclosures</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-cinema">
+                    <h5>Programs</h5>
+                    <ul>
+                        <li><a href="#classes">Classes 1–8</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#volunteers">Volunteers</a></li>
+                        <li><a href="#contact">How to Join</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-cinema">
+                    <h5>Contact</h5>
+                    <ul>
+                        <li><a href="#">No. 24, Trust Bhavan</a></li>
+                        <li><a href="#">Chennai 600 001</a></li>
+                        <li><a href="#">+91 44 2836 4477</a></li>
+                        <li><a href="#">office@kesinganss.org</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom-cinema">
+                <div>© 2025 Kesingan SS Trust. All rights reserved.</div>
+                <div class="footer-legal-cinema">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- LIGHTBOX                                                     -->
+    <!-- ============================================================ -->
+    <div class="lightbox" id="lightbox" onclick="handleLightboxClick(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-nav prev" onclick="prevImage(event)" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="lightbox-nav next" onclick="nextImage(event)" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="lightbox-image-wrap">
+            <img id="lightboxImage" src="" alt="">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- CHATBOT — Markup                                             -->
+    <!-- ============================================================ -->
+    <button id="chatbotToggle" aria-label="Open chat" onclick="toggleChatbot()">
+        <i class="fas fa-comments"></i>
+        <span class="chatbot-pulse"></span>
+    </button>
+
+    <aside class="chatbot-sidebar" id="chatbotSidebar">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-header-avatar"><i class="fas fa-robot"></i></div>
+                <div class="chatbot-header-text">
+                    <div class="name">Kesingan SS Trust AI</div>
+                    <div class="status">● Online</div>
+                </div>
+            </div>
+            <button class="chatbot-close-btn" onclick="toggleChatbot()" aria-label="Close chat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages"></div>
+        <div class="chatbot-quick-suggestions" id="chatbotQuickSuggestions">
+            <button onclick="quickAsk('What classes does the Trust teach?')">📚 Classes</button>
+            <button onclick="quickAsk('How can I become a volunteer?')">🤝 Volunteer</button>
+            <button onclick="quickAsk('How do I enroll my child?')">👶 Enroll a Child</button>
+            <button onclick="quickAsk('How can I contact the Trust office?')">📞 Contact</button>
+        </div>
+        <div class="chatbot-input-area">
+            <textarea class="chatbot-input" id="chatbotInput" rows="1" placeholder="Ask about Kesingan SS Trust..." maxlength="2000" onkeydown="handleChatbotKeypress(event)"></textarea>
+            <button class="chatbot-send-btn" onclick="sendChatbotMessage()" aria-label="Send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ============================================================ -->
+    <!-- LIGHTBOX SCRIPT                                              -->
+    <!-- ============================================================ -->
+    <script>
+        (function() {
+            let galleryData = [];
+            let currentIndex = 0;
+
+            function buildGalleryData() {
+                galleryData = [];
+                document.querySelectorAll('#galleryGrid .gallery-item').forEach((item) => {
+                    const img = item.querySelector('img');
+                    if (img) {
+                        galleryData.push({
+                            src: img.src,
+                            alt: img.alt || '',
+                            caption: img.dataset.caption || item.querySelector('.gallery-caption')?.textContent || ''
+                        });
+                    }
+                });
+            }
+
+            window.openLightbox = function(index) {
+                buildGalleryData();
+                currentIndex = index;
+                showImage();
+                document.getElementById('lightbox').classList.add('open');
+                document.body.style.overflow = 'hidden';
+            };
+
+            window.closeLightbox = function(event) {
+                if (event) event.stopPropagation();
+                document.getElementById('lightbox').classList.remove('open');
+                document.body.style.overflow = '';
+            };
+
+            function showImage() {
+                const item = galleryData[currentIndex];
+                if (!item) return;
+                document.getElementById('lightboxImage').src = item.src;
+                document.getElementById('lightboxImage').alt = item.alt;
+                document.getElementById('lightboxCaption').textContent = item.caption;
+                document.getElementById('lightboxCounter').textContent = (currentIndex + 1) + ' / ' + galleryData.length;
+            }
+
+            window.nextImage = function(event) {
+                if (event) event.stopPropagation();
+                currentIndex = (currentIndex + 1) % galleryData.length;
+                showImage();
+            };
+
+            window.prevImage = function(event) {
+                if (event) event.stopPropagation();
+                currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length;
+                showImage();
+            };
+
+            window.handleLightboxClick = function(event) {
+                if (event.target.id === 'lightbox') closeLightbox(event);
+            };
+
+            document.addEventListener('keydown', function(e) {
+                const lightbox = document.getElementById('lightbox');
+                if (!lightbox.classList.contains('open')) return;
+                if (e.key === 'Escape') closeLightbox();
+                else if (e.key === 'ArrowRight') nextImage();
+                else if (e.key === 'ArrowLeft') prevImage();
+            });
+        })();
+    </script>
+
+    <!-- ============================================================ -->
+    <!-- MAIN SITE SCRIPTS                                            -->
+    <!-- ============================================================ -->
+    <script>
+        (function() {
+            const revealEls = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+            revealEls.forEach(el => observer.observe(el));
+
+            const nav = document.querySelector('.nav-fixed');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 60) {
+                    nav.style.background = 'rgba(15, 14, 12, 0.85)';
+                    nav.style.backdropFilter = 'blur(20px)';
+                    nav.style.webkitBackdropFilter = 'blur(20px)';
+                    nav.style.mixBlendMode = 'normal';
+                    nav.style.borderBottom = '1px solid rgba(244, 240, 232, 0.08)';
+                } else {
+                    nav.style.background = 'transparent';
+                    nav.style.backdropFilter = 'none';
+                    nav.style.webkitBackdropFilter = 'none';
+                    nav.style.mixBlendMode = 'difference';
+                    nav.style.borderBottom = 'none';
+                }
+            });
+        })();
+    </script>
+
+    <script src="chatbot.js"></script>
+</body>
+</html>
